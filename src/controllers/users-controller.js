@@ -4,7 +4,7 @@ const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken'); 
 const { SECRET_KEY } = require('./../../config');
 
-const generateAccesToken = (id) => {
+const generateAccessToken = (id) => {
   const payload = {id};
   return jwt.sign(payload, SECRET_KEY, {expiresIn: '24h'});
 }
@@ -46,7 +46,7 @@ const login = async (req, res) => {
       return res.status(400).send('Uncorrect password');
     }
     user.password = '';
-    const token = generateAccesToken(user._id);
+    const token = generateAccessToken(user._id);
     return res.json({token, user});
     
   } catch (error) {
