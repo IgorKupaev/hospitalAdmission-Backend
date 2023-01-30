@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require('cors');
 const mongoose = require("mongoose");
 const app = express();
-// const Todo = require("./src/models/Todo");
 const { PORT,  DB_CONNECTION } = require('./config');
 const apiRoutes = require("./src/routes/admission");
 
