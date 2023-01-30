@@ -18,7 +18,7 @@ const loadApp = async () => {
     });
     
     app.listen(PORT, () => {
-      console.log(`Example app listening on port ${PORT}`);
+      console.log(`Hospital Admissions listening on port ${PORT}`);
     });
   } catch (error) {
     console.log(error);
