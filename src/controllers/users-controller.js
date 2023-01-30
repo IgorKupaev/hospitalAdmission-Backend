@@ -1,12 +1,12 @@
-const { createUser } = require("../services/admission-services");
+const { createUser } = require("../services/user-services");
 const bcrypt = require('bcrypt');
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken'); 
 const { SECRET_KEY } = require('./../../config');
 
 const generateAccesToken = (id) => {
-  const payload = {id}
-  return jwt.sign(payload, SECRET_KEY, {expiresIn: '24h'})
+  const payload = {id};
+  return jwt.sign(payload, SECRET_KEY, {expiresIn: '24h'});
 }
 
 const regUser = async (req, res) => {
@@ -25,7 +25,7 @@ const regUser = async (req, res) => {
     const hashPassword = bcrypt.hashSync(password, 7);
     const user = new User({login, password: hashPassword});
 
-    await createUser(user)
+    await createUser(user);
 
     return res.status(200).send("User's registration is succesful");
   } catch (error) {

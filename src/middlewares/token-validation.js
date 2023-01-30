@@ -11,5 +11,5 @@ const tokenValidation = [
 ];
 
 module.exports = {
-  tokenValidation,
+  tokenValidation
 };

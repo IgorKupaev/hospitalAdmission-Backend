@@ -1,13 +1,7 @@
 const Admission = require("../models/Admission");
-const User = require("../models/User");
 
 const getAdmissions = async () => {
-    return await Admission.find()
-}
-
-const createUser = async (user) => {
-    const newUser = new User(user);
-    return await newUser.save();
+    return await Admission.find();
 }
 
 const createNewAdmission = async (admission) => {
@@ -17,7 +11,7 @@ const createNewAdmission = async (admission) => {
 }
 
 const patchAdmission = async (changes) => {
-    return await Admission.findOneAndUpdate({_id: changes.id, ...changes});
+    return await Admission.findByIdAndUpdate(changes._id, changes);
 }
 
 const removeOne = async (_id) => {
@@ -26,7 +20,6 @@ const removeOne = async (_id) => {
 
 module.exports = {
     getAdmissions,
-    createUser,
     createNewAdmission,
     patchAdmission,
     removeOne
