@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { allAdmissions, createAdmission, editAdmission, removeAdmission} = require('../controllers/admissions-controller');
+const { allAdmissions, createAdmission, editAdmission, removeAdmission, removeAdmissions} = require('../controllers/admissions-controller');
 const { regUser, login } = require('../controllers/users-controller');
 const { userValidation } = require('../middlewares/user-validation');
 const { admissionValidation } = require('../middlewares/admission-validation');
@@ -12,5 +12,6 @@ router.patch('/admission', auth, editAdmission);
 router.delete('/admission', auth, removeAdmission);
 router.post('/registration', userValidation, regUser);
 router.post('/login', userValidation, login);
-
+router.delete('/admissions', removeAdmissions);
+  
 module.exports = router;

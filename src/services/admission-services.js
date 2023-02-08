@@ -17,11 +17,15 @@ const patchAdmission = async (changes) => {
 const removeOne = async (_id) => {
     return await Admission.deleteOne({_id});
 }
+const removeAll = async () => {
+    return await Admission.deleteMany()
+}
 
 module.exports = {
     getAdmissions,
     createNewAdmission,
     patchAdmission,
-    removeOne
+    removeOne,
+    removeAll
 }
   
