@@ -15,11 +15,12 @@ const regUser = async (req, res) => {
     const {login, password} = req.body;
     const candidate = await User.findOne({login});
 
-    if (!errors.isEmpty()) {
-      return res.status(400).send('Not valid values');
-    }
     if (candidate) {
       return res.status(400).send('This user name is already registered');
+    }
+
+    if (!errors.isEmpty()) {
+      return res.status(400).send('Not valid values');
     }
 
     const hashPassword = bcrypt.hashSync(password, 7);
